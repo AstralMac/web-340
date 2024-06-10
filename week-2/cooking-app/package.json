@@ -1,0 +1,12 @@
+{
+  "name": "recipe-application",
+  "version": "1.0.0",
+  "description": "A simple recipe application using Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node tester.js"
+  },
+  "author": "Malcolm Abdullah",
+  "license": "ISC"
+}
