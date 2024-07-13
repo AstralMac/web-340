@@ -1,17 +1,28 @@
-const { Duplex } = require('stream');
+"use strict";
+// Author: Malcolm Abdullah
+// Date; July 12th, 2024
 
-class CharacterCreator extends Duplex {
-  constructor(options) {
-    super(options);
-    // TODO: Initialize your class here
+const { Transform } = require('stream');
+
+class CharacterCreator extends Transform {
+  constructor() {
+    super({ objectMode: true });
   }
 
-  _write(chunk, encoding, callback) {
-    // TODO: Implement your _write method here
-  }
-
-  _read(size) {
-    // TODO: Implement your _read method here
+  _transform(chunk, encoding, callback) {
+    try {
+      const data = chunk.toString().trim();
+      if (!data) {
+        this.emit('error', new Error('Invalid data'));
+        return callback();
+      }
+      const processedData = `Processed: ${data}`;
+      this.push(processedData);
+      callback();
+    } catch (error) {
+      this.emit('error', error);
+      callback();
+    }
   }
 }
 

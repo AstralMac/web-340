@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["jest"]
+    "types": ["jest"],
+    "typeRoots": ["./node_modules/@types"]
   }
 }
