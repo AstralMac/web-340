@@ -1,27 +1,20 @@
-// game-characters.js
 "use strict";
 
-
-const { spawn } = require("child_process");
+const {spawn} = require("child_process");
 const {join} = require("path");
-const dataFile = join(__dirname, "game-characters-data.js");
+const dataFile = join(_dirname, "comic-books-data.js");
 
-class GameCharacters {
+class ComicBooks {
   constructor(scriptPath = dataFile) {
-    // TODO: Set the script file path
     this.scriptPath = scriptPath;
   }
 
-  getGameCharacters(callback) {
-    // TODO: Implement this method
+  getComicBooks(callback) {
     const child = spawn("node", [this.scriptPath]);
 
-    let stdout = "";
-    let stderr= "";
-
     child.stdout.on("data", (data) => {
-      const gameCharacters = JSON.parse(data.toString());
-      callback(gameCharacters, null);
+      const comicData = JSON. parse(data.toString());
+      callback(comicData, null);
     });
 
     child.stderr.on("data", (data) => {
@@ -36,4 +29,4 @@ class GameCharacters {
   }
 }
 
-module.exports = { GameCharacters };
+module.exports = {ComicBooks};
